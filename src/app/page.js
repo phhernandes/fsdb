@@ -1,6 +1,6 @@
 import CardFilme from "@/components/CardFilme";
 import Titulo from "@/components/Titulo";
-import { PlayCircleOutlined,Search} from '@mui/icons-material';
+import { PlayCircleOutlined,Search, VideocamOffOutlined} from '@mui/icons-material';
 import './globals.css';
 
 async function carregarDados(){
@@ -19,8 +19,7 @@ export default async function Home() {
       <nav className="bg-slate-700 text-zinc-100 p-5">
         <ul className="flex flex-row justify-between px-10">
           <li className='flex space-x-0.5'>
-            <PlayCircleOutlined className='text-3xl' style={{ color:'#FF5964' }}/>
-            <a href="#" className="text-3xl font-bold">Beats</a>
+            <a href="#" className="text-3xl font-bold">FSDB</a>
           </li>
           <li>
             <a href="/favoritos" className='text-2xl font-bold'>Favoritos</a>
