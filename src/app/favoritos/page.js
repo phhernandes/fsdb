@@ -1,18 +1,26 @@
 import CardFilme from "@/components/CardFilme";
 import Titulo from "@/components/Titulo";
 import { PlayCircleOutlined,Search} from '@mui/icons-material';
-import './globals.css';
 
 async function carregarDados(){
-  const url = "https://api.themoviedb.org/3/trending/movie/week?api_key=1e922667481ab207d642450b0efb461e&language=pt-br"
-  const response = await fetch(url)
-  const json = await response.json()
-  return json.results
-}
+    const options = {
+        method: 'GET',
+        headers: {
+          accept: 'application/json',
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Y2Q3NTJiYmNmNjU5YjZjMWVjODBlODZiNmQxYWMzMiIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Maf9QCMRyaSm-AQISXnLTtnv2tpAiSZy9Q_DGgnFtc4'
+        }
+      };
+      
+      const response = await fetch('https://api.themoviedb.org/3/account/20464421/watchlist/movies?language=pt-br&page=1&sort_by=created_at.asc', options)
+      const json = await response.json()
+      console.log(json)
+      return json.results
+} 
 
-export default async function Home() {
+export default async function Favoritos() {
 
  const filmes = await carregarDados()
+ console.log(filmes)
 
   return (
     <>
@@ -41,13 +49,12 @@ export default async function Home() {
         </ul>
       </nav>
 
-      <Titulo>Em alta</Titulo>
 
-      <section className="flex flex-wrap px-40 gap-y-5 justify-between text-zinc-100">
+      <Titulo>Favoritos</Titulo>
+
+      <section className="flex flex-wrap px-40 justify-start text-zinc-100">
         {filmes.map( filme => <CardFilme filme={filme} /> )}
       </section>
-
-      <Titulo>Lançamentos</Titulo>
     </>
   )
 }
