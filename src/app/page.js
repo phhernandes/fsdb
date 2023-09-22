@@ -4,7 +4,7 @@ import { PlayCircleOutlined,Search, VideocamOffOutlined} from '@mui/icons-materi
 import './globals.css';
 
 async function carregarDados(){
-  const url = "https://api.themoviedb.org/3/trending/tv/week?api_key=8cd752bbcf659b6c1ec80e86b6d1ac32&language=pt-br"
+  const url = "https://api.themoviedb.org/3/trending/tv/week?api_key=51a8cd0e592085ce33649b900fdea1b8&language=pt-br"
   const response = await fetch(url)
   const json = await response.json()
   return json.results
@@ -19,6 +19,7 @@ export default async function Home() {
       <nav className="bg-slate-700 text-zinc-100 p-5">
         <ul className="flex flex-row justify-between px-10">
           <li className='flex space-x-0.5'>
+          <PlayCircleOutlined className='text-3xl' style={{ color:'#FF5964' }}/>
             <a href="#" className="text-3xl font-bold">FSDB</a>
           </li>
           <li>

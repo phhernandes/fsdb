@@ -7,9 +7,15 @@ async function carregarDados(){
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Y2Q3NTJiYmNmNjU5YjZjMWVjODBlODZiNmQxYWMzMiIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Maf9QCMRyaSm-AQISXnLTtnv2tpAiSZy9Q_DGgnFtc4'
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MWE4Y2QwZTU5MjA4NWNlMzM2NDliOTAwZmRlYTFiOCIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EjaLLTQ82voanX0qaDRGqqdSk0vM-GHWUthGOwtpbpc'
     }
   };
+  
+  fetch('https://api.themoviedb.org/3/account/20464421/watchlist', options)
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+
   
       
       const response = await fetch('https://api.themoviedb.org/3/account/20464421/watchlist/tv?language=pt-BR&page=1&sort_by=created_at.asc', options)

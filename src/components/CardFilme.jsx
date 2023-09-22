@@ -17,7 +17,21 @@ export default function CardFilme({filme}){
     function favoritar(){
         setFavorito(true)
 
-        const options = {  method: 'POST',  headers: {    accept: 'application/json',    'content-type': 'application/json',    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Y2Q3NTJiYmNmNjU5YjZjMWVjODBlODZiNmQxYWMzMiIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Maf9QCMRyaSm-AQISXnLTtnv2tpAiSZy9Q_DGgnFtc4'  },  body: JSON.stringify({media_type: 'movie', media_id: filme.id, watchlist: true})};fetch('https://api.themoviedb.org/3/account/20464421/watchlist?session_id=string', options)  .then(response => response.json())  .then(response => console.log(response))  .catch(err => console.error(err));
+        const options = {
+            method: 'POST',
+            headers: {
+              accept: 'application/json',
+              'content-type': 'application/json',
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MWE4Y2QwZTU5MjA4NWNlMzM2NDliOTAwZmRlYTFiOCIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EjaLLTQ82voanX0qaDRGqqdSk0vM-GHWUthGOwtpbpc'
+            },
+            body: JSON.stringify({media_type: 'tv', media_id: filme.id, watchlist: true})
+          };
+          
+          fetch('https://api.themoviedb.org/3/account/20464421/watchlist', options)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .catch(err => console.error(err));
+
 
         let favoritos = JSON.parse( localStorage.getItem("favoritos") ) || []
         favoritos.push(filme)
@@ -27,7 +41,20 @@ export default function CardFilme({filme}){
     function desfavoritar(){
         setFavorito(false)
 
-        const options = {  method: 'POST',  headers: {    accept: 'application/json',    'content-type': 'application/json',    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Y2Q3NTJiYmNmNjU5YjZjMWVjODBlODZiNmQxYWMzMiIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Maf9QCMRyaSm-AQISXnLTtnv2tpAiSZy9Q_DGgnFtc4'  },  body: JSON.stringify({media_type: 'movie', media_id: filme.id, watchlist: false})};fetch('https://api.themoviedb.org/3/account/20464421/watchlist?session_id=string', options)  .then(response => response.json())  .then(response => console.log(response))  .catch(err => console.error(err));
+        const options = {
+            method: 'POST',
+            headers: {
+              accept: 'application/json',
+              'content-type': 'application/json',
+              Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MWE4Y2QwZTU5MjA4NWNlMzM2NDliOTAwZmRlYTFiOCIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EjaLLTQ82voanX0qaDRGqqdSk0vM-GHWUthGOwtpbpc'
+            },
+            body: JSON.stringify({media_type: 'tv', media_id: filme.id, watchlist: false})
+          };
+          
+          fetch('https://api.themoviedb.org/3/account/20464421/watchlist', options)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .catch(err => console.error(err));
 
         let favoritos = JSON.parse( localStorage.getItem("favoritos") ) || []
         const favoritosAtualizados = favoritos.filter(f => f.id !== filme.id )
@@ -36,17 +63,17 @@ export default function CardFilme({filme}){
 
     return (
         <div className="flex flex-col gap-1 items-center bg-slate-700 p-3 rounded-lg w-52 m-2 shadow-md relative">
-            {favorito ? (
+            {favorito ? 
             <HeartIcon
             className="h-6 w-6 text-[#FF5964] top-5 right-5 absolute cursor-pointer"
             onClick={desfavoritar}
-         />
-        ) : (
+          />
+         : 
             <HeartIconOutline
             className="h-6 w-6 text-zinc-100 top-5 right-5 absolute cursor-pointer hover:text-[#FF5964]"
             onClick={favoritar}
             />
-        )}
+         }
             <img className="rounded-lg" src={image_url} alt="poster do filme" />
             <span className="font-bold text-lg w-full line-clamp-1 text-center">
                 {filme.name}
@@ -58,7 +85,11 @@ export default function CardFilme({filme}){
                 <span className="font-light text-lg text-center">
                     {filme.vote_average.toFixed(1)}
                 </span>
+                    
             </div>
-    </div>
-    );
+                <a href="#" className="bg-[#FF5964] w-full rounded text-center py-1 hover:bg-[#d14851]">
+                detalhes
+                </a>  
+        </div> 
+    )
 }   
