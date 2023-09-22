@@ -4,7 +4,7 @@ import { PlayCircleOutlined,Search, VideocamOffOutlined} from '@mui/icons-materi
 import './globals.css';
 
 async function carregarDados(){
-  const url = "https://api.themoviedb.org/3/trending/movie/week?api_key=1e922667481ab207d642450b0efb461e&language=pt-br"
+  const url = "https://api.themoviedb.org/3/trending/tv/week?api_key=8cd752bbcf659b6c1ec80e86b6d1ac32&language=pt-br"
   const response = await fetch(url)
   const json = await response.json()
   return json.results

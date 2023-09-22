@@ -3,15 +3,16 @@ import Titulo from "@/components/Titulo";
 import { PlayCircleOutlined,Search} from '@mui/icons-material';
 
 async function carregarDados(){
-    const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Y2Q3NTJiYmNmNjU5YjZjMWVjODBlODZiNmQxYWMzMiIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Maf9QCMRyaSm-AQISXnLTtnv2tpAiSZy9Q_DGgnFtc4'
-        }
-      };
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Y2Q3NTJiYmNmNjU5YjZjMWVjODBlODZiNmQxYWMzMiIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Maf9QCMRyaSm-AQISXnLTtnv2tpAiSZy9Q_DGgnFtc4'
+    }
+  };
+  
       
-      const response = await fetch('https://api.themoviedb.org/3/account/20464421/watchlist/movies?language=pt-br&page=1&sort_by=created_at.asc', options)
+      const response = await fetch('https://api.themoviedb.org/3/account/20464421/watchlist/tv?language=pt-BR&page=1&sort_by=created_at.asc', options)
       const json = await response.json()
       console.log(json)
       return json.results

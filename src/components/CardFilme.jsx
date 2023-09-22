@@ -17,7 +17,7 @@ export default function CardFilme({filme}){
     function favoritar(){
         setFavorito(true)
 
-        const options = {  method: 'POST',  headers: {    accept: 'application/json',    'content-type': 'application/json',    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Y2Q3NTJiYmNmNjU5YjZjMWVjODBlODZiNmQxYWMzMiIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Maf9QCMRyaSm-AQISXnLTtnv2tpAiSZy9Q_DGgnFtc4'  },  body: JSON.stringify({media_type: 'movie', media_id: filme.id, watchlist: true})};fetch('https://api.themoviedb.org/3/account/20464421/watchlist', options)  .then(response => response.json())  .then(response => console.log(response))  .catch(err => console.error(err));
+        const options = {  method: 'POST',  headers: {    accept: 'application/json',    'content-type': 'application/json',    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Y2Q3NTJiYmNmNjU5YjZjMWVjODBlODZiNmQxYWMzMiIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Maf9QCMRyaSm-AQISXnLTtnv2tpAiSZy9Q_DGgnFtc4'  },  body: JSON.stringify({media_type: 'movie', media_id: filme.id, watchlist: true})};fetch('https://api.themoviedb.org/3/account/20464421/watchlist?session_id=string', options)  .then(response => response.json())  .then(response => console.log(response))  .catch(err => console.error(err));
 
         let favoritos = JSON.parse( localStorage.getItem("favoritos") ) || []
         favoritos.push(filme)
@@ -27,7 +27,7 @@ export default function CardFilme({filme}){
     function desfavoritar(){
         setFavorito(false)
 
-        const options = {  method: 'POST',  headers: {    accept: 'application/json',    'content-type': 'application/json',    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Y2Q3NTJiYmNmNjU5YjZjMWVjODBlODZiNmQxYWMzMiIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Maf9QCMRyaSm-AQISXnLTtnv2tpAiSZy9Q_DGgnFtc4'  },  body: JSON.stringify({media_type: 'movie', media_id: filme.id, watchlist: false})};fetch('https://api.themoviedb.org/3/account/20464421/watchlist', options)  .then(response => response.json())  .then(response => console.log(response))  .catch(err => console.error(err));
+        const options = {  method: 'POST',  headers: {    accept: 'application/json',    'content-type': 'application/json',    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4Y2Q3NTJiYmNmNjU5YjZjMWVjODBlODZiNmQxYWMzMiIsInN1YiI6IjY1MGEwMGFiY2FkYjZiMDBhYmM2MmFmOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Maf9QCMRyaSm-AQISXnLTtnv2tpAiSZy9Q_DGgnFtc4'  },  body: JSON.stringify({media_type: 'movie', media_id: filme.id, watchlist: false})};fetch('https://api.themoviedb.org/3/account/20464421/watchlist?session_id=string', options)  .then(response => response.json())  .then(response => console.log(response))  .catch(err => console.error(err));
 
         let favoritos = JSON.parse( localStorage.getItem("favoritos") ) || []
         const favoritosAtualizados = favoritos.filter(f => f.id !== filme.id )
@@ -49,7 +49,7 @@ export default function CardFilme({filme}){
         )}
             <img className="rounded-lg" src={image_url} alt="poster do filme" />
             <span className="font-bold text-lg w-full line-clamp-1 text-center">
-                {filme.title}
+                {filme.name}
             </span>
             <div className="flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-amber-500">
