@@ -20,7 +20,7 @@ export default async function Home() {
         <ul className="flex flex-row justify-between px-10">
           <li className='flex space-x-0.5'>
           <PlayCircleOutlined className='text-3xl' style={{ color:'#FF5964' }}/>
-            <a href="#" className="text-3xl font-bold">FSDB</a>
+            <a href="/" className="text-3xl font-bold">FSDB</a>
           </li>
           <li>
             <a href="/favoritos" className='text-2xl font-bold'>Favoritos</a>
