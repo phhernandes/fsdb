@@ -87,9 +87,9 @@ export default function CardFilme({filme}){
                 </span>
                     
             </div>
-                <a href="#" className="bg-[#FF5964] w-full rounded text-center py-1 hover:bg-[#d14851]">
+                <button href="#" className="bg-[#FF5964] rounded text-center py-1 px-5 hover:bg-[#d14851]">
                 detalhes
-                </a>  
+                </button>  
         </div> 
     )
 }   
